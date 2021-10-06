@@ -95,7 +95,7 @@ def main():
             break
         else:
             print("Optiune invalida citita de la tastatura")
-    if _name_=='_main_':
+if _name_=='_main_':
         test_get_leap_years()
         test_is_superprime()
         test_get_perfect_squares()
