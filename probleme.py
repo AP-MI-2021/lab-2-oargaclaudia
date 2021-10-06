@@ -17,10 +17,9 @@ def test_get_leap_years():
     assert get_leap_years(1601,1630)=="1604 1608 1612 1616 1620 1624 1628 "
 def get_perfect_squares(n, m):
     '''
-
     :param n:  un numar citit de la tastatura
     :param m: un numar citit de la tastatura
-    :return:
+    :return: toate numerele patrate perfecte din intervalul detrminat de n si m
     '''
     numereperfecte = ''
     if math.sqrt(n) == math.isqrt(n) and n!=0:
@@ -38,9 +37,42 @@ def test_get_perfect_squares():
     assert get_perfect_squares(4, 10) == "4 9 "
     assert get_perfect_squares(100, 121) == "100 121 "
     assert get_perfect_squares(0, 10) == "1 4 9 "
+def is_prime(n):
+    '''
+
+    :param n: un numar natural citit de la tastaura
+    :return: True daca numarul este prim. In caz contrar (numarul nu este prim) returneaza False
+    '''
+    if n<2:
+        return False
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+
+def is_superprime(n):
+    '''
+
+    :param n: un numar natural citit de la tastatura
+    :return: True, daca numarul citit de la tastatura este superprim. False, in caz contrar.
+    '''
+    if n<2:
+        return False
+    while n!=0:
+        if is_prime(n)==False:
+            return False
+        else:
+            n=n//10
+    return True
+def test_is_superprime():
+    assert is_superprime(15)==False
+    assert is_superprime(101)==False
+    assert is_superprime(233)==True
+    assert is_superprime(237)==False
 while True:
         print('1.Afișează toți anii bisecți între doi ani dați (inclusiv anii dați).')
         print('2.Afișează toate pătratele perfecte dintr-un interval închis dat')
+        print('3. Determina daca un numar este superprim ')
         print('x.Iesire din program-Exit')
         optiune=input('Alege optiunea: ')
         if optiune=='1':
@@ -53,7 +85,11 @@ while True:
             b = int(input("Dati al doilea numar: "))
             test_get_perfect_squares()
             print(get_perfect_squares(a,b))
+        elif optiune=='3':
+            n=int(input('Dati numarul de la tastatura: '))
+            test_is_superprime()
+            print(is_superprime(n))
         elif optiune=='x':
             break
         else:
-            print("Optiune invalida")
+            print("Optiune invalida citita de la tastatura")
